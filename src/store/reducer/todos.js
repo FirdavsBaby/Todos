@@ -1,5 +1,6 @@
-// let todosArr = JSON.parse(localStorage.getItem("todosList") || "{ todos: [] }");
-let todosArr = { todos: [] };
+let todosArr = JSON.parse(
+  localStorage.getItem("todosList") || '{ "todos": [] }'
+);
 
 function todosReducer(state = todosArr, action) {
   switch (action.type) {
@@ -11,7 +12,7 @@ function todosReducer(state = todosArr, action) {
           { title: action.payload, id: crypto.randomUUID() },
         ],
       };
-      // localStorage.setItem("todosList", JSON.stringify(newTodo));
+      localStorage.setItem("todosList", JSON.stringify(newTodo));
       return newTodo;
     }
     case "REMOVE_TODO": {
@@ -19,7 +20,7 @@ function todosReducer(state = todosArr, action) {
         ...state,
         todos: state.todos.filter((t) => t.id !== action.payload),
       };
-      // localStorage.setItem("todosList", JSON.stringify(newTodo));
+      localStorage.setItem("todosList", JSON.stringify(newTodo));
       return newTodo;
     }
     default: {
