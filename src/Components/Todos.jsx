@@ -8,6 +8,7 @@ const Todos = () => {
     function handelAddTodo(e) {
         e.preventDefault()
         dispatch({type: "ADD_TODO", payload: inpRef.current.value})
+        inpRef.current.value = ""
     }
   return (
     <section className="d-flex w-100 flex-column gap-5 align-items-center py-4">
